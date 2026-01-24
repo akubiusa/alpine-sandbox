@@ -1,7 +1,7 @@
 # GitHub Copilot Instructions
 
 ## プロジェクト概要
-- 目的: Docker (Windows) で Alpine のサンドボックス環境を 1 コマンドで立てられるようにするやつ。 コンテナ内で実行したコマンドやその結果は script コマンドか [asciinema](https://asciinema.org/) で記録する。
+Docker-based Alpine Linux sandbox environment for testing and experimentation. Allows quick setup of containerized Alpine environments with command/output recording capabilities using asciinema.
 
 ## 共通ルール
 - 会話は日本語で行う。
@@ -11,7 +11,8 @@
 - 既存のプロジェクトルールがある場合はそれを優先する。
 
 ## 技術スタック
-- パッケージマネージャー: pnpm 優先（ロックファイルに従う）。
+- 言語: Dockerfile, PowerShell
+- パッケージマネージャー: apk (Alpine Linux)
 
 ## コーディング規約
 - フォーマット: 既存設定（ESLint / Prettier / formatter）に従う。
@@ -22,9 +23,20 @@
 - TypeScript 使用時は strict 前提とし、`skipLibCheck` で回避しない。
 - 関数やインターフェースには docstring（JSDoc など）を記載する。
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# README を確認してください
+# install
+git clone https://github.com/book000/alpine-sandbox
+
+# dev
+docker build -t alpine-sandbox .
+
+# build
+docker build -f Dockerfile -t alpine-sandbox .
+
+# test
+docker run alpine-sandbox
+
 ```
 
 ## テスト方針
@@ -35,5 +47,14 @@
 - ログに機密情報を出力しない。
 
 ## ドキュメント更新
+- 実装確定後、同一コミットまたは追加コミットで更新する。
+- README、API ドキュメント、コメント等は常に最新状態を保つ。
 
 ## リポジトリ固有
+- **type**: Infrastructure/Utility
+**platforms:**
+  - Windows (PowerShell)
+  - Docker
+- **key_feature**: asciinema recording support for Alpine containers
+- **maintenance_status**: Active
+- **special_notes**: Two Dockerfile variants provided (script-cmd-ver for alternative script command handling)

@@ -25,3 +25,10 @@
 - ログに機密情報を出力しない。
 
 ## リポジトリ固有
+- **type**: Infrastructure/Utility
+**platforms:**
+  - Windows (PowerShell)
+  - Docker
+- **key_feature**: asciinema recording support for Alpine containers
+- **maintenance_status**: Active
+- **special_notes**: Two Dockerfile variants provided (script-cmd-ver for alternative script command handling)

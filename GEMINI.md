@@ -15,7 +15,15 @@
 - 日本語と英数字の間には半角スペースを入れる。
 
 ## プロジェクト概要
-- 目的: Docker (Windows) で Alpine のサンドボックス環境を 1 コマンドで立てられるようにするやつ。 コンテナ内で実行したコマンドやその結果は script コマンドか [asciinema](https://asciinema.org/) で記録する。
+Docker-based Alpine Linux sandbox environment for testing and experimentation. Allows quick setup of containerized Alpine environments with command/output recording capabilities using asciinema.
+
+### 技術スタック
+- **言語**: Dockerfile, PowerShell
+- **フレームワーク**: Docker
+- **パッケージマネージャー**: apk (Alpine Linux)
+- **主要な依存関係**:
+  - alpine:3
+  - asciinema
 
 ## コーディング規約
 - フォーマット: 既存設定（ESLint / Prettier / formatter）に従う。
@@ -23,9 +31,20 @@
 - コメント言語: 日本語
 - エラーメッセージ: 英語
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# README を確認してください
+# install
+git clone https://github.com/book000/alpine-sandbox
+
+# dev
+docker build -t alpine-sandbox .
+
+# build
+docker build -f Dockerfile -t alpine-sandbox .
+
+# test
+docker run alpine-sandbox
+
 ```
 
 ## 注意事項
@@ -34,3 +53,10 @@
 - 既存のプロジェクトルールがある場合はそれを優先する。
 
 ## リポジトリ固有
+- **type**: Infrastructure/Utility
+**platforms:**
+  - Windows (PowerShell)
+  - Docker
+- **key_feature**: asciinema recording support for Alpine containers
+- **maintenance_status**: Active
+- **special_notes**: Two Dockerfile variants provided (script-cmd-ver for alternative script command handling)
