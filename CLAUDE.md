@@ -40,4 +40,6 @@ two Dockerfiles and a batch launcher.
 
 - If you rename the image tag, change the mount paths (`/work`, `/logs`), or add a new
   Dockerfile variant, update `alpine-sandbox.bat` and `README.md` together so the launcher
-  and the docs stay in sync.
+  and the docs stay in sync. These values are also referenced in `CLAUDE.md` and
+  `.github/copilot-instructions.md`, so update those two agent docs in the same change to
+  keep them from going stale.
